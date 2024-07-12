@@ -7,7 +7,7 @@ lsp_zero.on_attach(function(client, bufnr)
 end)
 
 -- all of this is handled by Mason
-lsp_zero.setup_servers({'rust_analyzer', "clangd"})
+lsp_zero.setup_servers({'rust_analyzer', "clangd", "zls", "asm_lsp"})
 -- 
 -- C
 require'lspconfig'.clangd.setup{}
@@ -21,6 +21,8 @@ require'lspconfig'.rust_analyzer.setup{
         }
     }
 }
+-- assembly
+require'lspconfig'.asm_lsp.setup{}
 
 -- fixing the pop-up autocomplete
 local cmp = require('cmp')

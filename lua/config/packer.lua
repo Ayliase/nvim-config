@@ -42,13 +42,13 @@ return require("packer").startup(function(use)
 
 	use "williamboman/mason.nvim"
 
-    use 'm4xshen/autoclose.nvim'
+    use "m4xshen/autoclose.nvim"
 
     use {
         "folke/noice.nvim",
         requires = {
             {"MunifTanjim/nui.nvim"},
-            {"rcarriga/nvim-notify"},
+            -- {"rcarriga/nvim-notify"},
         }
     }
 end)
