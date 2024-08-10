@@ -12,7 +12,8 @@ require'nvim-treesitter.configs'.setup {
       "bash",
       "markdown",
       "markdown_inline",
-      "zig"
+      "zig",
+      "go",
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)

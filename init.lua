@@ -10,6 +10,8 @@ require "plugin.telescope"
 require("telescope").load_extension("noice")
 require "plugin.treesitter"
 require "plugin.noice"
+require "plugin.lualine"
+-- require "plugin.alpha"
 
 
 vim.opt.swapfile = false

@@ -7,7 +7,7 @@ lsp_zero.on_attach(function(client, bufnr)
 end)
 
 -- all of this is handled by Mason
-lsp_zero.setup_servers({'rust_analyzer', "clangd", "zls", "asm_lsp"})
+lsp_zero.setup_servers({'rust_analyzer', "clangd", "zls", "asm_lsp", "gopls", "lua-language-server"})
 -- 
 -- C
 require'lspconfig'.clangd.setup{}
@@ -24,6 +24,21 @@ require'lspconfig'.rust_analyzer.setup{
 -- assembly
 require'lspconfig'.asm_lsp.setup{}
 
+-- gopls
+require'lspconfig'.gopls.setup({
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+    },
+  },
+})
+
+require'lspconfig'.lua_ls.setup{}
+
 -- fixing the pop-up autocomplete
 local cmp = require('cmp')
 local cmp_actions = require("lsp-zero").cmp_action()
@@ -33,7 +48,8 @@ cmp.setup({
 		['<C-k>'] =  cmp.mapping.select_prev_item(cmp_select),
 		['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
 		['<Tab>'] = cmp.mapping.confirm({ select = true }),
-		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-Space>"] = cmp.mapping.abort(),
 	})
 })
+
 

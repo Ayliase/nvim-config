@@ -51,4 +51,51 @@ return require("packer").startup(function(use)
             -- {"rcarriga/nvim-notify"},
         }
     }
+
+    use {
+        "hrsh7th/cmp-buffer",
+        require = {
+            {"hrsh7th/nvim-cmp"},  -- The completion plugin
+            {"hrsh7th/cmp-buffer"},  -- Buffer completions
+            {"hrsh7th/cmp-path"},    -- Path completions
+        }
+    }
+
+    use {
+        "nvim-lualine/lualine.nvim",
+        requires = { 
+            {"nvim-tree/nvim-web-devicons"},
+            opt = true }
+    }
+
+    use {
+        "goolord/alpha-nvim",
+        requires = { 'nvim-tree/nvim-web-devicons' }, -- Optional for icons
+        config = function()
+            require'alpha'.setup(require'alpha.themes.startify'.config)
+        end
+    }
+
+    use {
+        "numToStr/Comment.nvim",
+        config = function()
+            require('Comment').setup()
+        end
+    }
+
+    use {
+        "kevinhwang91/nvim-ufo",
+        requires = {
+            {"kevinhwang91/promise-async"},
+        },
+        config = function()
+            require('ufo').setup({
+                -- your configuration options here
+                provider_selector = function(bufnr, filetype, buftype)
+                    return {'treesitter', 'indent'}
+                end,
+            })
+        end,
+    }
+
 end)
